@@ -2,6 +2,8 @@
 
 Spotifydash is a Chromecast-like web page for seeing whats currently playing on Spotify. Only for MacOS, not tested on Windows.
 
+![Picture](http://i.imgur.com/D4qa5iy.png)
+
 ## Requirements
 
 -A computer that runs MacOS (haven't tested this on Windows).
