@@ -1,0 +1,18 @@
+{
+  "name": "Spotifydash",
+  "version": "1.0.0",
+  "description": "A fancy spotify viewer",
+  "main": "spotifydash.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@jonny/spotify-web-helper": "^1.6.0",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "socket.io": "^1.7.2",
+    "watchjs": "0.0.0"
+  }
+}

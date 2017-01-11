@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spotify Dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="CSS/bulma.css">
+  <link rel="stylesheet" type="text/css" href="CSS/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+    socket.on('updateSongData', function(data){
+
+      $("#songLabel").fadeOut('slow').promise().done(function() {
+        $("#songLabel").html(data.title);
+        $("#songLabel").fadeIn('slow');
+      });
+
+      $("#artistLabel").fadeOut('slow').promise().done(function() {
+        $("#artistLabel").html(data.artist);
+        $("#artistLabel").fadeIn('slow');
+      });
+
+      if (data.isPaused != true) {
+        $("#albumArtImage").fadeOut('slow').promise().done(function() {
+          $("#albumArtImage").attr('src', data.albumArtUrl);
+          $("#albumArtImage").fadeIn('slow');
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <section class="hero is-fullheight is-dark">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="columns is-vcentered">
+          <div class="column is-5">
+            <figure class="image is-4by3">
+              <img id="albumArtImage" src="http://whatsappguru.de/wp-content/uploads/2016/01/10854914_902324726447174_2892641330441465819_o.png" class="promo-img" alt="Description">
+            </figure>
+          </div>
+          <div class="column is-6 is-offset-1">
+            <h1 id="songLabel" class="title is-2">
+              Hello, <%= yourName %>.
+            </h1>
+            <h2 id="artistLabel" class="subtitle is-4">
+              Start playing a song on Spotify.
+            </h2>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
